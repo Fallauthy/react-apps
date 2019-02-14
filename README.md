@@ -1,1 +1,1 @@
-App based on React.js
+Apps based on React.js
