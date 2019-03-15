@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import styles from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import Aux from '../hoc/Aux';
 import withClass from '../hoc/withClass';
 
 export const AuthContext = React.createContext(false);
@@ -97,11 +96,11 @@ class App extends PureComponent {
 
     return (
       // <div className={styles.App}>
-      <Aux>
+      <React.Fragment>
         <button onClick={() => { this.setState({ showPersons: true }) }}>Show Persons</button>
         <Cockpit showPersons={this.state.showPersons} persons={this.state.persons} clicked={this.togglePersonsHandler} appTitle={this.props.title} login={this.loginHandler} />
         <AuthContext.Provider value={this.state.authenticated}>{persons}</AuthContext.Provider>
-      </Aux>
+      </React.Fragment>
       // </div>
     );
   }

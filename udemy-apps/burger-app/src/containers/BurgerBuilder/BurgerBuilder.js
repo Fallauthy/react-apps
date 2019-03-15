@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import Aux from '../../hoc/Aux/Aux';
 import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal'
@@ -134,10 +133,10 @@ class BurgerBuilder extends Component {
 
         if (this.state.ingredients) {
             burger = (
-                <Aux>
+                <React.Fragment>
                     <Burger ingredients={this.state.ingredients} />
                     <BuildControls ordered={this.purchaseHandler} ingredientAdded={this.addIngredientHandler} ingredientRemoved={this.removeIngredientHandler} disabled={disabledInfo} price={this.state.totalPrice} purchasable={this.state.purchasable} />
-                </Aux>
+                </React.Fragment>
             );
             orderSummary = <OrderSummary price={this.state.totalPrice.toFixed(2)} ingredients={this.state.ingredients} purchaseCancelled={this.puchaseCancelHandler} purchaseContinued={this.purchaseConituneHandler} />
         }
@@ -147,12 +146,12 @@ class BurgerBuilder extends Component {
         }
 
         return (
-            <Aux>
+            <React.Fragment>
                 <Modal show={this.state.purchasing} modalClosed={this.puchaseCancelHandler}>
                     {orderSummary}
                 </Modal>
                 {burger}
-            </Aux>
+            </React.Fragment>
         );
     }
 }
